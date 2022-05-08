@@ -17,6 +17,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 var indexRouter = require('./routes/index');
 var eventRouter = require('./routes/eventRoutes');
 var infrastructureRouter = require('./routes/infrastructureRoutes');
+var clientRouter = require('./routes/clientRoutes');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/event', eventRouter);
 app.use('/infrastructure', infrastructureRouter);
+app.use('/client', clientRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,3 +1,27 @@
+POST http://localhost:3000/client
+Content-Type: application/json
+
+{
+    "client_name": "test_client_1",
+    "password": "test123",
+    "email": "test@gmail.com"
+}
+
+###
+
+GET http://localhost:3000/client
+
+###
+
+GET http://localhost:3000/client/6277d6f080d08b0d4751c499
+
+###
+
+DELETE http://localhost:3000/client/6277d6f080d08b0d4751c499
+
+
+###
+
 POST http://localhost:3000/infrastructure
 Content-Type: application/json
 
