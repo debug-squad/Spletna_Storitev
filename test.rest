@@ -1,3 +1,30 @@
+POST http://localhost:3000/infrastructure
+Content-Type: application/json
+
+{
+    "title": "Stuk",
+    "type": "bar",
+    "tags": ["party", "club", "bar"],
+    "address": "Gosposvetska cesta 83, Maribor, SI 2000",
+    "location": {
+        "type": "Point",
+        "coordinates": [46.55372, 15.64767]
+    }
+}
+
+###
+
+GET http://localhost:3000/infrastructure
+###
+
+GET http://localhost:3000/infrastructure/6277d34b9c4418f95a064f9c
+
+###
+
+DELETE http://localhost:3000/infrastructure/6277d34b9c4418f95a064f9c
+
+###
+
 POST http://localhost:3000/event
 Content-Type: application/json
 
