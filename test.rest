@@ -1,3 +1,19 @@
+GET http://localhost:3000/attendance
+
+###
+
+GET http://localhost:3000/event/6277efa6140baedf6b8cb240
+
+###
+
+GET http://localhost:3000/event/6277efa6140baedf6b8cb240/attendance
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTYwZTcxZjYzMjcyMmYwNTU3OGMiLCJleHAiOjE2NTIwMjcxMjM4ODQsImlzQWRtaW4iOnRydWV9.kiEfXNUb8CXKNJ3FOK-64FD2i7kGDTLK-OO-00ssmIM
+
+###
+POST http://localhost:3000/event/6277efa6140baedf6b8cb240/attendance
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTYwZTcxZjYzMjcyMmYwNTU3OGMiLCJleHAiOjE2NTIwMjcxMjM4ODQsImlzQWRtaW4iOnRydWV9.kiEfXNUb8CXKNJ3FOK-64FD2i7kGDTLK-OO-00ssmIM
+
+
 
 ###
 
@@ -79,7 +95,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTMxMzkwMDJmZDAwNGYzNjdlZWMiLCJleHAiOjE2NTIwMjUwODgyMzcsImlzQWRtaW4iOmZhbHNlfQ.1OM6eRtgKexpdOZmT6BW7gvrBi1epntxA2Oh6ZoCmyY
 
 {
-    "title": "Stuk",
+    "title": "Stuk 2",
     "desription": "",
     "tags": ["party", "club", "bar"],
     "entry_type": "ticket",
