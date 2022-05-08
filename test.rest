@@ -1,3 +1,6 @@
+GET http://localhost:3000/infrastructure?long=46.554650&lat=15.645881&dist=1000
+###
+
 POST http://localhost:3000/client
 Content-Type: application/json
 
