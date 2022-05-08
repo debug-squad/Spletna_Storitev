@@ -13,11 +13,14 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
+// Passport init
+require('./auth');
 
 var indexRouter = require('./routes/index');
 var eventRouter = require('./routes/eventRoutes');
 var infrastructureRouter = require('./routes/infrastructureRoutes');
 var clientRouter = require('./routes/clientRoutes');
+var attendanceRouter = require('./routes/attendanceRoutes');
 
 var app = express();
 
@@ -35,6 +38,7 @@ app.use('/', indexRouter);
 app.use('/event', eventRouter);
 app.use('/infrastructure', infrastructureRouter);
 app.use('/client', clientRouter);
+app.use('/attendance', attendanceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,16 +47,12 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
+  console.error(err);
   res.status(err.status || 500);
   res.json({
     error: true,
     message: err.message,
-    description: err,
+    description: req.app.get('env') === 'development' ? err : {},
   })
 });
  

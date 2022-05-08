@@ -9,6 +9,8 @@ const SALT_ROUNDS = parseInt(process.env.BCRYPT_ROUNDS || 10);
  * @description :: Server-side logic for managing clients.
  */
 module.exports = {
+    login: require('../auth').controllers.login,
+
     register: async (req, res, next) => {
         const { client_name, email, password } = req.body;
         let client = new ClientModel({
@@ -16,7 +18,13 @@ module.exports = {
             email,
             password_hash: await hash(password, await genSalt(SALT_ROUNDS))
         })
-        await client.save();
+
+        try {
+            await client.save();
+        } catch(e) {
+            return next(e)
+        }
+
         res.json(client.view());
     },
 

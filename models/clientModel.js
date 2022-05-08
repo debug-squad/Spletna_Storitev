@@ -9,6 +9,12 @@ var clientSchema = new Schema({
 	"password_hash": String,
 
 	//
+	//
+	//
+
+	"is_admin": { type: Boolean, default: false, required: true },
+
+	//
 	// Modification fields
 	//
 

@@ -7,6 +7,12 @@ var eventSchema = new Schema({
 	'tags' : [String],
 
 	//
+	//
+	//
+
+	'attendace': { type: Number, default: 0, required: true },
+
+	//
 	// Entry info
 	//
 
