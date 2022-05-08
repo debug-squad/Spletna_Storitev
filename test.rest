@@ -1,0 +1,39 @@
+POST http://localhost:3000/event
+Content-Type: application/json
+
+{
+    "title": "Stuk",
+    "desription": "",
+    "tags": ["party", "club", "bar"],
+    "entry_type": "ticket",
+    "entry_cost": "5.40€",
+    "location": {
+        "type": "Point",
+        "coordinates": [46.55472, 15.64667]
+    },
+    "infrastructure": null,
+    "contacts": {
+        "phone": "+386 591 24589",
+        "email": null
+    },
+    "social_medias": {
+        "facebook": null,
+		"twitter": null,
+		"instagram": null
+    },
+    "duration": {
+        "from": "2022-05-08T14:18:48.753Z",
+        "to": "2022-05-09T06:18:48.753Z"
+    }
+}
+
+###
+
+GET http://localhost:3000/event
+
+###
+
+GET http://localhost:3000/event/627710f3633c0424ab8e31da
+
+###
+DELETE http://localhost:3000/event/6277afdd6b409056359b1676
