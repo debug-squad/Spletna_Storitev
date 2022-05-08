@@ -1,14 +1,32 @@
-GET http://localhost:3000/infrastructure?long=46.554650&lat=15.645881&dist=1000
+
 ###
 
-POST http://localhost:3000/client
+POST http://localhost:3000/client/login
 Content-Type: application/json
 
 {
-    "client_name": "test_client_1",
+    "client_name": "test_client_2",
+    "password": "test123"
+}
+
+###
+
+POST http://localhost:3000/client/register
+Content-Type: application/json
+
+{
+    "client_name": "test_client_2",
     "password": "test123",
     "email": "test@gmail.com"
 }
+
+###
+
+GET http://localhost:3000/client
+
+###
+
+GET http://localhost:3000/infrastructure?long=46.554650&lat=15.645881&dist=1000
 
 ###
 
@@ -21,12 +39,14 @@ GET http://localhost:3000/client/6277d6f080d08b0d4751c499
 ###
 
 DELETE http://localhost:3000/client/6277d6f080d08b0d4751c499
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTMxMzkwMDJmZDAwNGYzNjdlZWMiLCJleHAiOjE2NTIwMjUwODgyMzcsImlzQWRtaW4iOmZhbHNlfQ.1OM6eRtgKexpdOZmT6BW7gvrBi1epntxA2Oh6ZoCmyY
 
 
 ###
 
 POST http://localhost:3000/infrastructure
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTYwZTcxZjYzMjcyMmYwNTU3OGMiLCJleHAiOjE2NTIwMjUyMjUwNjUsImlzQWRtaW4iOnRydWV9.E9PyCoATKlzIXsBEcEQgSLsBnFu2waFSD7xdlBgxfk0
 
 {
     "title": "Stuk",
@@ -49,11 +69,14 @@ GET http://localhost:3000/infrastructure/6277d34b9c4418f95a064f9c
 ###
 
 DELETE http://localhost:3000/infrastructure/6277d34b9c4418f95a064f9c
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTMxMzkwMDJmZDAwNGYzNjdlZWMiLCJleHAiOjE2NTIwMjUwODgyMzcsImlzQWRtaW4iOmZhbHNlfQ.1OM6eRtgKexpdOZmT6BW7gvrBi1epntxA2Oh6ZoCmyY
+
 
 ###
 
 POST http://localhost:3000/event
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTMxMzkwMDJmZDAwNGYzNjdlZWMiLCJleHAiOjE2NTIwMjUwODgyMzcsImlzQWRtaW4iOmZhbHNlfQ.1OM6eRtgKexpdOZmT6BW7gvrBi1epntxA2Oh6ZoCmyY
 
 {
     "title": "Stuk",
@@ -91,3 +114,4 @@ GET http://localhost:3000/event/627710f3633c0424ab8e31da
 
 ###
 DELETE http://localhost:3000/event/6277afdd6b409056359b1676
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTMxMzkwMDJmZDAwNGYzNjdlZWMiLCJleHAiOjE2NTIwMjUwODgyMzcsImlzQWRtaW4iOmZhbHNlfQ.1OM6eRtgKexpdOZmT6BW7gvrBi1epntxA2Oh6ZoCmyY

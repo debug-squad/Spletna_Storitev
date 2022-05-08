@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var clientController = require('../controllers/clientController.js');
+const {middleware: {ensureAuthenticated, ensureIsAdmin}} = require('../auth');
 
-router.post('/', clientController.register);
+
+router.post('/login', clientController.login);
+router.post('/register', clientController.register);
 
 /*
  * GET
@@ -17,11 +20,11 @@ router.get('/:id', clientController.show);
 /*
  * PUT
  */
-router.put('/:id', clientController.update);
+router.put('/:id', ensureIsAdmin, clientController.update);
 
 /*
  * DELETE
  */
-router.delete('/:id', clientController.remove);
+router.delete('/:id', ensureIsAdmin, clientController.remove);
 
 module.exports = router;
