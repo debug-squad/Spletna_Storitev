@@ -5,7 +5,7 @@ on:
   # but only for the main branch
   push:
     branches:
-      - development
+      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
