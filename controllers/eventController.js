@@ -11,7 +11,32 @@ module.exports = {
      * eventController.list()
      */
     list: function (req, res) {
-        EventModel.find(function (err, events) {
+        let query = {};
+        {
+            let lat = req.query.lat;
+            let long = req.query.long;
+            let dist = req.query.dist;
+            if(lat != undefined && long != undefined && dist != undefined) {
+                query = {
+                    ...query,
+                    location: {
+                        $near: {
+                            $geometry: {
+                                type: "Point" ,
+                                coordinates: [ +long , +lat ]
+                            },
+                            $maxDistance: +dist,
+                        }
+                    }
+                };
+            } else if (lat != undefined || long != undefined || dist != undefined) {
+                return res.status(401).json({
+                    error: true,
+                    message: 'when doing geospacial queries lat, long and dist must be defined'
+                })
+            }
+        }
+        EventModel.find(query).exec(function (err, events) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting event.',
