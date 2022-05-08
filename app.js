@@ -15,7 +15,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var eventRouter = require('./routes/eventRoutes');
 var infrastructureRouter = require('./routes/infrastructureRoutes');
 
@@ -32,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/event', eventRouter);
 app.use('/infrastructure', infrastructureRouter);
 
