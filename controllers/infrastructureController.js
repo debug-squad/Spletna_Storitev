@@ -10,9 +10,38 @@ module.exports = {
     /**
      * infrastructureController.list()
      */
-    list: function (req, res) {
-        InfrastructureModel.find(function (err, infrastructures) {
+    list: function (req, res,next) {
+        let query = {};
+
+        {
+            let lat = req.query.lat;
+            let long = req.query.long;
+            let dist = req.query.dist;
+            if(lat != undefined && long != undefined && dist != undefined) {
+                query = {
+                    ...query,
+                    location: {
+                        $near: {
+                            $geometry: {
+                                type: "Point" ,
+                                coordinates: [ +long , +lat ]
+                            },
+                            $maxDistance: +dist,
+                        }
+                    }
+                };
+            } else if (lat != undefined || long != undefined || dist != undefined) {
+                return res.status(401).json({
+                    error: true,
+                    message: 'when doing geospacial queries lat, long and dist must be defined'
+                })
+            }
+        }
+        
+        InfrastructureModel.find(query).exec(function (err, infrastructures) {
+          
             if (err) {
+                return next(err)
                 return res.status(500).json({
                     message: 'Error when getting infrastructure.',
                     error: err
