@@ -1,0 +1,90 @@
+POST http://localhost:3000/client
+Content-Type: application/json
+
+{
+    "client_name": "test_client_1",
+    "password": "test123",
+    "email": "test@gmail.com"
+}
+
+###
+
+GET http://localhost:3000/client
+
+###
+
+GET http://localhost:3000/client/6277d6f080d08b0d4751c499
+
+###
+
+DELETE http://localhost:3000/client/6277d6f080d08b0d4751c499
+
+
+###
+
+POST http://localhost:3000/infrastructure
+Content-Type: application/json
+
+{
+    "title": "Stuk",
+    "type": "bar",
+    "tags": ["party", "club", "bar"],
+    "address": "Gosposvetska cesta 83, Maribor, SI 2000",
+    "location": {
+        "type": "Point",
+        "coordinates": [46.55372, 15.64767]
+    }
+}
+
+###
+
+GET http://localhost:3000/infrastructure
+###
+
+GET http://localhost:3000/infrastructure/6277d34b9c4418f95a064f9c
+
+###
+
+DELETE http://localhost:3000/infrastructure/6277d34b9c4418f95a064f9c
+
+###
+
+POST http://localhost:3000/event
+Content-Type: application/json
+
+{
+    "title": "Stuk",
+    "desription": "",
+    "tags": ["party", "club", "bar"],
+    "entry_type": "ticket",
+    "entry_cost": "5.40€",
+    "location": {
+        "type": "Point",
+        "coordinates": [46.55472, 15.64667]
+    },
+    "infrastructure": null,
+    "contacts": {
+        "phone": "+386 591 24589",
+        "email": null
+    },
+    "social_medias": {
+        "facebook": null,
+		"twitter": null,
+		"instagram": null
+    },
+    "duration": {
+        "from": "2022-05-08T14:18:48.753Z",
+        "to": "2022-05-09T06:18:48.753Z"
+    }
+}
+
+###
+
+GET http://localhost:3000/event
+
+###
+
+GET http://localhost:3000/event/627710f3633c0424ab8e31da
+
+###
+DELETE http://localhost:3000/event/6277afdd6b409056359b1676

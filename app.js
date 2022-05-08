@@ -15,7 +15,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var eventRouter = require('./routes/eventRoutes');
+var infrastructureRouter = require('./routes/infrastructureRoutes');
+var clientRouter = require('./routes/clientRoutes');
 
 var app = express();
 
@@ -30,7 +32,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/event', eventRouter);
+app.use('/infrastructure', infrastructureRouter);
+app.use('/client', clientRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,7 +49,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    error: true,
+    message: err.message,
+    description: err,
+  })
 });
  
 module.exports = app;
