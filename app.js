@@ -24,6 +24,22 @@ var attendanceRouter = require('./routes/attendanceRoutes');
 
 var app = express();
 
+//CORS
+var cors = require('cors');
+var allowedOrigins = ['http://localhost:3000', 'http://localhost:8000'];
+app.use(cors({
+  credentials: true,
+  origin: function(origin, callback){
+    // Allow requests with no origin (mobile apps, curl)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin)===-1){
+      var msg = "The CORS policy does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -33,6 +49,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/**
+ * Vključimo session in connect-mongo.
+ * Connect-mongo skrbi, da se session hrani v bazi.
+ * Posledično ostanemo prijavljeni, tudi ko spremenimo kodo (restartamo strežnik)
+ */
+ var session = require('express-session');
+ var MongoStore = require('connect-mongo');
+ app.use(session({
+   secret: 'work hard',
+   resave: true,
+   saveUninitialized: false,
+   store: MongoStore.create({mongoUrl: mongoDB})
+ }));
+
 
 app.use('/', indexRouter);
 app.use('/event', eventRouter);
