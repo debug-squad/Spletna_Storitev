@@ -6,6 +6,7 @@ const {middleware: {ensureAuthenticated, ensureIsAdmin}} = require('../auth');
 
 router.post('/login', clientController.login);
 router.post('/register', clientController.register);
+router.get('/profile', ensureAuthenticated, clientController.profile);
 
 /*
  * GET

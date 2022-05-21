@@ -49,7 +49,7 @@ const login = async (req, res, next) => {
                 isAdmin: user.is_admin
             };
             const token = await jwt.sign(JSON.stringify(payload), process.env.JWT_SECRET, { algorithm: process.env.JWT_ALGORITHM });
-            res.json({ success: true, data: { token: token } });
+            res.json({ success: true, data: { token: token, client: user.view() } });
         }
     })(req, res);
 }

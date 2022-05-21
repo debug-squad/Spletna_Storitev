@@ -127,7 +127,7 @@ module.exports = {
 
 			infrastructure.address = req.body.address ? req.body.address : infrastructure.address;
 			infrastructure.location = req.body.location ? req.body.location : infrastructure.location;
-            event.modified = new Date();
+            infrastructure.modified = new Date();
 
             infrastructure.save(function (err, infrastructure) {
                 if (err) {

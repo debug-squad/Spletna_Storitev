@@ -28,6 +28,10 @@ module.exports = {
         res.json(client.view());
     },
 
+    profile: (req, res) => {
+        res.json(req.user.view());
+    },
+
     /**
      * clientController.list()
      */
@@ -90,6 +94,7 @@ module.exports = {
 
             client.client_name = req.body.client_name ? req.body.client_name : client.client_name;
 			client.email = req.body.email ? req.body.email : client.email;
+            client.modified = new Date();
 			
             client.save(function (err, client) {
                 if (err) {
