@@ -92,8 +92,8 @@ module.exports = {
 
             CONFIG_event.interval = req.body.interval ? req.body.interval : CONFIG_event.interval;
 			CONFIG_event.CSS_selector = req.body.CSS_selector ? req.body.CSS_selector : CONFIG_event.CSS_selector;
-			CONFIG_event.created = req.body.created ? req.body.created : CONFIG_event.created;
-			CONFIG_event.modified = req.body.modified ? req.body.modified : CONFIG_event.modified;
+			CONFIG_event.modified = new Date();
+
 			
             CONFIG_event.save(function (err, CONFIG_event) {
                 if (err) {
