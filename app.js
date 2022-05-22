@@ -21,6 +21,7 @@ var eventRouter = require('./routes/eventRoutes');
 var infrastructureRouter = require('./routes/infrastructureRoutes');
 var clientRouter = require('./routes/clientRoutes');
 var attendanceRouter = require('./routes/attendanceRoutes');
+var configEventRouter = require('./routes/configEventRoutes');
 
 var app = express();
 
@@ -70,6 +71,7 @@ app.use('/event', eventRouter);
 app.use('/infrastructure', infrastructureRouter);
 app.use('/client', clientRouter);
 app.use('/attendance', attendanceRouter);
+app.use('/config-event', configEventRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

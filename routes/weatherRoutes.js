@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var weatherController = require('../controllers/weatherController.js');
+const {middleware: {ensureAuthenticated, ensureIsAdmin}} = require('../auth');
+const EventModel = require('../models/eventModel');
 
 /*
  * GET

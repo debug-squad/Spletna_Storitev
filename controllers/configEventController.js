@@ -1,4 +1,4 @@
-var Config_eventModel = require('../models/CONFIG_eventModel.js');
+var Config_eventModel = require('../models/configEventModel.js');
 
 /**
  * CONFIG_eventController.js
@@ -54,8 +54,8 @@ module.exports = {
         var CONFIG_event = new Config_eventModel({
 			interval : req.body.interval,
 			CSS_selector : req.body.CSS_selector,
-			created : req.body.created,
-			modified : req.body.modified
+			created : Date.now(),
+			modified : Date.now()
         });
 
         CONFIG_event.save(function (err, CONFIG_event) {
@@ -92,8 +92,8 @@ module.exports = {
 
             CONFIG_event.interval = req.body.interval ? req.body.interval : CONFIG_event.interval;
 			CONFIG_event.CSS_selector = req.body.CSS_selector ? req.body.CSS_selector : CONFIG_event.CSS_selector;
-			CONFIG_event.created = req.body.created ? req.body.created : CONFIG_event.created;
-			CONFIG_event.modified = req.body.modified ? req.body.modified : CONFIG_event.modified;
+			CONFIG_event.modified = new Date();
+
 			
             CONFIG_event.save(function (err, CONFIG_event) {
                 if (err) {
@@ -111,6 +111,11 @@ module.exports = {
     /**
      * CONFIG_eventController.remove()
      */
+
+    dodaj: function(req, res){
+        res.render('config');
+    },
+
     remove: function (req, res) {
         var id = req.params.id;
 
