@@ -27,7 +27,7 @@ var app = express();
 
 //CORS
 var cors = require('cors');
-var allowedOrigins = ['http://localhost:3000', 'http://localhost:8000','https://mb-hub.netlify.app/','https://mb-hub.herokuapp.com/'];
+var allowedOrigins = ['http://localhost:3000', 'http://localhost:8000','https://mb-hub.netlify.app','https://mb-hub.herokuapp.com'];
 app.use(cors({
   credentials: true,
   origin: function(origin, callback){
