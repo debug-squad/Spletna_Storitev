@@ -10,7 +10,7 @@ module.exports = {
     /**
      * eventController.list()
      */
-    list: function (req, res) {
+     list: function (req, res) {
         let query = {};
         {
             let lat = req.query.lat;
@@ -35,6 +35,22 @@ module.exports = {
                     message: 'when doing geospacial queries lat, long and dist must be defined'
                 })
             }
+        }
+
+        {
+            let after =  req.query.after;
+            if(after != undefined) {
+                after = new Date(after);
+
+                query = {
+                    ...query,
+                    $or: [
+                        { "date_start": { $gte: after } },
+                        { "date_end": { $gte: after } },
+                    ],
+                };
+            }
+
         }
         EventModel.find(query).exec(function (err, events) {
             if (err) {
@@ -78,15 +94,16 @@ module.exports = {
     create: function (req, res) {
         var event = new EventModel({
 			title : req.body.title,
-			desription : req.body.desription,
-			tags : req.body.tags,
-			entry_type : req.body.entry_type,
-			entry_cost : req.body.entry_cost,
+			description : req.body.description,
+			date_start : req.body.date_start,
+			date_end : req.body.date_end,
 			location : req.body.location,
-            infrastructure: req.body.infrastructure,
-            contacts: req.body.contacts,
-            social_medias: req.body.social_medias,
-            duration: req.body.duration,
+			organization : req.body.organization,
+			contact : req.body.contact,
+			price : req.body.price,
+			tags : req.body.tags,
+			image_url : req.body.image_url,
+			site_url : req.body.site_url
         });
 
         event.save(function (err, event) {
@@ -122,15 +139,16 @@ module.exports = {
             }
 
             event.title = req.body.title ? req.body.title : event.title;
-			event.desription = req.body.desription ? req.body.desription : event.desription;
-			event.tags = req.body.tags ? req.body.tags : event.tags;
-            event.entry_type = req.body.entry_type ? req.body.v : event.entry_type;
-            event.entry_cost = req.body.entry_cost ? req.body.entry_cost : event.entry_cost;
+			event.description = req.body.description ? req.body.description : event.description;
+			event.date_start = req.body.date_start ? req.body.date_start : event.date_start;
+			event.date_end = req.body.date_end ? req.body.date_end : event.date_end;
 			event.location = req.body.location ? req.body.location : event.location;
-            event.infrastructure = req.body.infrastructure ? req.body.infrastructure : event.infrastructure;
-            event.contacts = req.body.contacts ? req.body.contacts : event.contacts;
-            event.social_medias = req.body.social_medias ? req.body.social_medias : event.social_medias;
-            event.duration = req.body.duration ? req.body.duration : event.duration;
+			event.organization = req.body.organization ? req.body.organization : event.organization;
+			event.contact = req.body.contact ? req.body.contact : event.contact;
+			event.price = req.body.price ? req.body.price : event.price;
+			event.tags = req.body.tags ? req.body.tags : event.tags;
+			event.image_url = req.body.image_url ? req.body.image_url : event.image_url;
+			event.site_url = req.body.site_url ? req.body.site_url : event.site_url;
             event.modified = new Date();
 			
             event.save(function (err, event) {
