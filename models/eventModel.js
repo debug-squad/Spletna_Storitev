@@ -9,7 +9,7 @@ var eventSchema = new Schema({
 	'contact' : { type: String, required: false },
 	'price' : { type: String, required: false },
 	'tags' : { type: [String], required: true },
-	'image_url' : { type: String, required: false },
+	'image_url' : { type: String, required: true },
 	'site_url' : { type: String, required: false },
 
 	'location': {
