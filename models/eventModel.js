@@ -2,26 +2,15 @@ var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var eventSchema = new Schema({
-	'title' : String,
-	'desription' : String,
-	'tags' : [String],
+	'title' : { type: String, required: true },
+	'description' : { type: String, required: true },
 
-	//
-	//
-	//
-
-	'attendace': { type: Number, default: 0, required: true },
-
-	//
-	// Entry info
-	//
-
-	'entry_type': String,
-	'entry_cost': String,
-
-	//
-	// Location
-	//
+	'organization' : { type: String, required: false },
+	'contact' : { type: String, required: false },
+	'price' : { type: String, required: false },
+	'tags' : { type: [String], required: true },
+	'image_url' : { type: String, required: false },
+	'site_url' : { type: String, required: false },
 
 	'location': {
 		'type': {
@@ -35,44 +24,18 @@ var eventSchema = new Schema({
 		}
 	},
 
-	'infrastructure': { type: mongoose.Schema.Types.ObjectId, ref: 'infrastructure' },
-
-	//
-	// Contact info
-	//
-
-	'contacts': {
-		'phone': String,
-		'email': String,
-	},
-
-	//
-	// Social media links
-	//
-
-	'social_medias' : {
-		'facebook': String,
-		'twitter': String,
-		'instagram': String,
-	},
+	'date_start' : { type: Date, required: true },
+	'date_end' : { type: Date, required: false },
 	
 	//
-	// Duration
+	//
 	//
 
-	'duration': {
-		from: Date,
-		to: Date
-	},
-
-	//
-	// Modification fields
-	//
+	'attendace': { type: Number, default: 0, required: true },
 
 	'created' :  { type: Date, default: () => new Date(), required: true },
 	'modified' : { type: Date, default: () => new Date(), required: true },
 });
-
 eventSchema.index({ location: '2dsphere' });
 eventSchema.methods.view = function() {
 	return {
