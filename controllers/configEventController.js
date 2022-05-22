@@ -1,4 +1,4 @@
-var Config_eventModel = require('../models/CONFIG_eventModel.js');
+var Config_eventModel = require('../models/configEventModel.js');
 
 /**
  * CONFIG_eventController.js

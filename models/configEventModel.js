@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-var CONFIG_eventSchema = new Schema({
+var configEventSchema = new Schema({
 	'interval' : Number,
 	'CSS_selector' : String,
 	'created' : Date,
 	'modified' : Date
 });
 
-module.exports = mongoose.model('CONFIG_event', CONFIG_eventSchema);
+module.exports = mongoose.model('config_event', configEventSchema);
