@@ -46,15 +46,7 @@ var eventSchema = new Schema({
 		'email': String,
 	},
 
-	//
-	// Social media links
-	//
 
-	'social_medias' : {
-		'facebook': String,
-		'twitter': String,
-		'instagram': String,
-	},
 	
 	//
 	// Duration

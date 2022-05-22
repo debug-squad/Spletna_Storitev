@@ -54,8 +54,8 @@ module.exports = {
         var CONFIG_event = new Config_eventModel({
 			interval : req.body.interval,
 			CSS_selector : req.body.CSS_selector,
-			created : req.body.created,
-			modified : req.body.modified
+			created : Date.now(),
+			modified : Date.now()
         });
 
         CONFIG_event.save(function (err, CONFIG_event) {
@@ -111,6 +111,11 @@ module.exports = {
     /**
      * CONFIG_eventController.remove()
      */
+
+    dodaj: function(req, res){
+        res.render('config');
+    },
+
     remove: function (req, res) {
         var id = req.params.id;
 
