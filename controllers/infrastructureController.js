@@ -24,7 +24,7 @@ module.exports = {
                         $near: {
                             $geometry: {
                                 type: "Point" ,
-                                coordinates: [ +long , +lat ]
+                                coordinates: [ +lat, +long ]
                             },
                             $maxDistance: +dist,
                         }
