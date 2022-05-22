@@ -14,6 +14,10 @@ POST http://localhost:3000/event/6277efa6140baedf6b8cb240/attendance
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTYwZTcxZjYzMjcyMmYwNTU3OGMiLCJleHAiOjE2NTIwMjcxMjM4ODQsImlzQWRtaW4iOnRydWV9.kiEfXNUb8CXKNJ3FOK-64FD2i7kGDTLK-OO-00ssmIM
 
 
+###
+GET http://localhost:3000/client/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjc3ZTYwZTcxZjYzMjcyMmYwNTU3OGMiLCJleHAiOjE2NTMxNTQwMjM0NzksImlzQWRtaW4iOnRydWV9.8auMZwGH6iSCWVNBM-ypXos5lG2H_YGXl6zPHfYVFZc
+
 
 ###
 

@@ -78,6 +78,7 @@ module.exports = {
                 }
 
                 event.attendace += 1;
+                event.modified = new Date();
 
                 event.save(function (err, event) {
                     if (err) {
@@ -119,6 +120,7 @@ module.exports = {
                 }
 
                 event.attendace -= 1;
+                event.modified = new Date();
 
                 event.save(function (err, event) {
                     if (err) {
