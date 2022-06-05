@@ -123,7 +123,7 @@ module.exports = {
                 });
             }
 
-            return res.status(204).json(client.view());
+            return res.status(204).json(client?.view() || {});
         });
     }
 };

@@ -7,5 +7,10 @@ var configEventSchema = new Schema({
 	'created' : Date,
 	'modified' : Date
 });
+configEventSchema.methods.view = function() {
+	return {
+		...this._doc,
+	};
+};
 
 module.exports = mongoose.model('config_event', configEventSchema);

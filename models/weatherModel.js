@@ -11,5 +11,10 @@ var weatherSchema = new Schema({
 		'velocity': Number,
 	}
 });
+weatherSchema.methods.view = function() {
+	return {
+		...this._doc,
+	};
+};
 
 module.exports = mongoose.model('weather', weatherSchema);

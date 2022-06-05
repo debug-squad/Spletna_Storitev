@@ -92,30 +92,51 @@ module.exports = {
      * eventController.create()
      */
     create: function (req, res) {
-        var event = new EventModel({
-			title : req.body.title,
-			description : req.body.description,
-			date_start : req.body.date_start,
-			date_end : req.body.date_end,
-			location : req.body.location,
-			organization : req.body.organization,
-			contact : req.body.contact,
-			price : req.body.price,
-			tags : req.body.tags,
-			image_url : req.body.image_url,
-			site_url : req.body.site_url
+
+        EventModel.findOne({title: req.body.title, description: req.body.description}, function (err, event) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when getting event',
+                    error: err
+                });
+            }
+
+            if (!event) {
+                console.log(req.body)
+                var event2 = new EventModel({
+                title : req.body.title,
+                    description : req.body.description,
+                    date_start : req.body.date_start,
+                    date_end : req.body.date_end,
+                    location : req.body.location,
+                    organization : req.body.organization,
+                    contact : req.body.contact,
+                    price : req.body.price,
+                    tags : req.body.tags,
+                    image_url : req.body.image_url,
+                    site_url : req.body.site_url
         });
 
-        event.save(function (err, event) {
+        return event2.save(function (err, event2) {
             if (err) {
+                //console.log(err)
                 return res.status(500).json({
                     message: 'Error when creating event',
                     error: err
                 });
             }
 
-            return res.status(201).json(event.view());
+            return res.status(201).json(event2.view());
         });
+            }
+
+			
+                return res.json(event.view());
+            });
+
+
+
+
     },
 
     /**
@@ -178,7 +199,7 @@ module.exports = {
                 });
             }
 
-            return res.status(204).json(event.view());
+            return res.status(204).json(event?.view() || {});
         });
     }
 };
