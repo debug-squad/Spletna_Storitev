@@ -8,5 +8,10 @@ var attendanceSchema = new Schema({
 	},
 	'timestamp' : { type: Date, default: () => new Date(), required: true },
 });
+attendanceSchema.methods.view = function() {
+	return {
+		...this._doc,
+	};
+};
 
 module.exports = mongoose.model('attendance', attendanceSchema);

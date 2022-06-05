@@ -156,7 +156,7 @@ module.exports = {
                 });
             }
 
-            return res.status(204).json(infrastructure.view());
+            return res.status(204).json(infrastructure?.view() || {});
         });
     }
 };

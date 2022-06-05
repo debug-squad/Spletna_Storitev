@@ -127,7 +127,7 @@ module.exports = {
                 });
             }
 
-            return res.status(204).json();
+            return res.status(204).json(CONFIG_event?.view() || {});
         });
     }
 };
