@@ -5,9 +5,9 @@ var eventSchema = new Schema({
 	'title' : { type: String, required: true },
 	'description' : { type: String, required: true },
 
-	'organization' : { type: String, required: false },
-	'contact' : { type: String, required: false },
-	'price' : { type: String, required: false },
+	'organization' : { type: String, required: false, default: null },
+	'contact' : { type: String, required: false, default: null },
+	'price' : { type: String, required: false, default: null },
 	'tags' : { type: [String], required: true },
 	'image_url' : { type: String, required: true },
 	'site_url' : { type: String, required: false, default: null },
@@ -25,7 +25,7 @@ var eventSchema = new Schema({
 	},
 
 	'date_start' : { type: Date, required: true },
-	'date_end' : { type: Date, required: false },
+	'date_end' : { type: Date, required: false, default: null },
 	
 	//
 	//
